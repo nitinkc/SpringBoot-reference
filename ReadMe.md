@@ -35,7 +35,7 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
 List<Student> findMaleStudents();
 ```
 
-Instead of native queries, JPQL can be used
+Instead of native queries, Java Persistence Query Language (JPQL) can be used
 ```java
 // Custom query using JPQL - Java Persistence Query Language
 @Query("SELECT s FROM Student s WHERE s.gender = 'Female'")
@@ -61,8 +61,6 @@ insert into student
 values (1, 'Anjanette', 'Pietrzyk', 'Female', 'Ugljevik', 'apietrzyk0@wufoo.com', 'Sul Ross State University', '1972-01-30')
 On CONFLICT(id) DO NOTHING;
 ```
-
-
 
 # Introducing Sequence
 
@@ -113,7 +111,7 @@ MAINTAINER suchismitadeb2000@gmail.com
 # Set up work directory
 WORKDIR /app
 # Copy the jar file into the work
-COPY build/libs/SpringBoot-Basics-0.0.1-SNAPSHOT.jar /app
+COPY build/libs/*.jar /app
 # Exposing port as per app yml/property
 EXPOSE 8090
 # Starting the application
