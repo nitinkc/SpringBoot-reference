@@ -20,4 +20,11 @@ CREATE SEQUENCE IF NOT EXISTS student_seq
      MAXVALUE 10000
     START WITH 1005
      NO CYCLE
-    OWNED BY student.id
+    OWNED BY student.id;
+
+DROP TABLE IF EXISTS users;
+CREATE TABLE IF NOT EXISTS users (
+	id UUID PRIMARY KEY,-- multiple entries in not PK
+	name VARCHAR(50),
+	date_of_birth DATE
+);

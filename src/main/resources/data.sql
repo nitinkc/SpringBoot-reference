@@ -998,3 +998,7 @@ insert into student (id, first_name, last_name, gender, cityofbirth, email, univ
 insert into student (id, first_name, last_name, gender, cityofbirth, email, university, dob) values (998, 'Cathrine', 'O''Corren', 'Female', 'Ruyigi', 'cocorrenrp@so-net.ne.jp', 'Eelo American University', '1976-08-21');
 insert into student (id, first_name, last_name, gender, cityofbirth, email, university, dob) values (999, 'Greggory', 'Jacquest', 'Male', 'Poxi', 'gjacquestrq@jimdo.com', 'University College of Arts, Crafts and Design', '1974-08-27');
 insert into student (id, first_name, last_name, gender, cityofbirth, email, university, dob) values (1000, 'Milissent', 'Caldayrou', 'Female', 'Pirapozinho', 'mcaldayrourr@hugedomains.com', 'Odessa State Medical University', '1972-06-23');
+
+
+insert into users(id,name,date_of_birth) values('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11','Budd Castellone', '1972-06-23');
+insert into users(id,name,date_of_birth) values('c2d29867-3d0b-d497-9191-18a9d8ee7830','Pattin Ferrelli', '1985-06-11');
