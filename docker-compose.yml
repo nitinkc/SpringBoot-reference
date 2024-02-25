@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13.1
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "postgres", "-U", "root" ]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password
+      - APP_DB_USER=nichaurasia
+      - APP_DB_PASS=a
+      - APP_DB_NAME=mydb
+      - APP_DB_SCHEMA=test
+    volumes: # Providing the customized path to 01-init.sh for entrypoint
+      - ./src/main/resources/db:/docker-entrypoint-initdb.d/
+    ports:
+      - 5432:5432
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8090:8090"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/mydb?currentSchema=test
+      SPRING_DATASOURCE_USERNAME: nichaurasia
+      SPRING_DATASOURCE_PASSWORD: a
