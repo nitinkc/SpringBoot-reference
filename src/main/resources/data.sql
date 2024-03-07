@@ -1000,5 +1000,5 @@ insert into student (id, first_name, last_name, gender, cityofbirth, email, univ
 insert into student (id, first_name, last_name, gender, cityofbirth, email, university, dob) values (1000, 'Milissent', 'Caldayrou', 'Female', 'Pirapozinho', 'mcaldayrourr@hugedomains.com', 'Odessa State Medical University', '1972-06-23');
 
 
-insert into users(id,name,date_of_birth) values('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11','Budd Castellone', '1972-06-23');
-insert into users(id,name,date_of_birth) values('c2d29867-3d0b-d497-9191-18a9d8ee7830','Pattin Ferrelli', '1985-06-11');
+insert into users(id,name,date_of_birth,email,phone) values('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11','Budd Castellone', '1972-06-23', 'bcastellonerm@multiply.com', '111-111-1111');
+insert into users(id,name,date_of_birth,email,phone) values('c2d29867-3d0b-d497-9191-18a9d8ee7830','Pattin Ferrelli', '1985-06-11','pferrellirn@mashable.com','(222) 222 2222');

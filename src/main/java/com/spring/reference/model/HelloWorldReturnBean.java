@@ -14,5 +14,5 @@ import java.time.ZonedDateTime;
 public class HelloWorldReturnBean {
 
 	private String message;
-	private ZonedDateTime time;
+	private String time;
 }

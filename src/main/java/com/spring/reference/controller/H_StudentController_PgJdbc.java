@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/jdbc")
-public class StudentPgJdbcController {
+public class H_StudentController_PgJdbc {
 
     private StudentServiceWithJdbcTemplatePg studentServiceWithJdbcTemplatePg;
 
     @Autowired
-    public StudentPgJdbcController(StudentServiceWithJdbcTemplatePg studentServiceWithJdbcTemplatePg) {
+    public H_StudentController_PgJdbc(StudentServiceWithJdbcTemplatePg studentServiceWithJdbcTemplatePg) {
         this.studentServiceWithJdbcTemplatePg = studentServiceWithJdbcTemplatePg;
     }
 

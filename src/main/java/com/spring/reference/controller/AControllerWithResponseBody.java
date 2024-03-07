@@ -6,19 +6,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
 @Controller
 @RequestMapping("/health")
 public class AControllerWithResponseBody {
 
-    @RequestMapping(
-            path = "/check",
-            method = RequestMethod.GET
-    )    public @ResponseBody String checkHealth() {
-        return "Health is Ok";
+  // @Controller needs @ResponseBody with method name
+  @RequestMapping(path = "/check", method = RequestMethod.GET)
+  public @ResponseBody String checkHealth() {
+        return "Health is Ok!!";
     }
 
-    @RequestMapping(method= RequestMethod.GET,path="/requestMapping")
+    @RequestMapping(method= RequestMethod.GET,path="/requestMappingGetBean")
     public @ResponseBody HelloWorldReturnBean helloWorldViaRequestMapping() {
-        return HelloWorldReturnBean.builder().message("Hello World").build();
+        String formattedCurrentTimeStamp = ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS a z(O)"));
+        return HelloWorldReturnBean.builder()
+                .message("Hello World")
+                .time(formattedCurrentTimeStamp)
+                .build();
     }
 }

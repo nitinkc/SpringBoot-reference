@@ -26,5 +26,7 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE IF NOT EXISTS users (
 	id UUID PRIMARY KEY,-- multiple entries in not PK
 	name VARCHAR(50),
-	date_of_birth DATE
+	date_of_birth DATE,
+	email VARCHAR(50) not null,
+	phone VARCHAR(50) not null
 );

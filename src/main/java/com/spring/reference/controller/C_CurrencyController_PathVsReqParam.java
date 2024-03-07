@@ -7,19 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 @RestController
-public class CurrencyController {
+public class C_CurrencyController_PathVsReqParam {
     @Autowired
     CurrencyConvertorService currencyConvertorService;
-
-    @GetMapping("/")
-    public List<String> test() {
-        return Arrays.asList("Hello-World!","test");
-    }
 
     @GetMapping("/currency-converter/from/{from}/to/{to}/quantity/{quantity}")
     public Double convertCurrency(@PathVariable String from,
@@ -28,6 +22,17 @@ public class CurrencyController {
 
         //Calling the Service Method
          Double convertedValue = currencyConvertorService.convertCurrency(from,to,quantity);
+
+        return convertedValue;
+    }
+
+    @GetMapping("/currency-converter")
+    public Double testEmail(@RequestParam(value = "from") String from,
+                            @RequestParam(value = "to", required = true, defaultValue = "INR") String to,
+                            @RequestParam(value = "quantity", required = false, defaultValue = "10.00") Double quantity) {
+
+        //Calling the Service Method
+        Double convertedValue = currencyConvertorService.convertCurrency(from,to,quantity);
 
         return convertedValue;
     }

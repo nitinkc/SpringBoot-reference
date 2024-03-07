@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
-public class TemperatureController {
+public class D_TemperatureController_RequestBody_AllTypes {
     @Autowired
     TemperatureConvertorService temperatureConvertorService;
 
@@ -28,13 +29,15 @@ public class TemperatureController {
 
     @PostMapping(path = "temperature-converter/values")
     public ResponseEntity<List<Double>> convertTemperatures(@RequestBody Map<String, List<Double>> body) {
-        //Extract the List out of the Request body
-        List<Double> temperatures = body.get("values");
-        return ResponseEntity.ok(temperatureConvertorService.convertTemperatureValues(temperatures));
+        List<Double> result = body.get("values").stream()
+                .map(temperatureConvertorService::convertTemperatureValue)
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(result);
     }
 
     @PostMapping(path = "temperature-converter/")
     public ResponseEntity<List<Double>> convertTemperaturesUsingObject(@RequestBody Temperature value) {
-        return ResponseEntity.ok(temperatureConvertorService.convertTemperatureValues(value.getValues()));
+        return ResponseEntity.ok(temperatureConvertorService.convertTemperatureValues(value));
     }
 }

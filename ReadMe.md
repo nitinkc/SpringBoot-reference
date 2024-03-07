@@ -89,12 +89,12 @@ From Service set the primary Key using the `getNextSequence()` method above
 public int saveStudent(StudentSave studentSave){
     Student student = Student.builder()
             //.id(4000)// If Primary key is hardcoded, it behaves like an update statement
-            .id(studentRepository.getNextSequence())//Introducing Sequence, fetch Sequence from Repository Interface
+            .id(studentJpaRepository.getNextSequence())//Introducing Sequence, fetch Sequence from Repository Interface
             .firstName(studentSave.firstName())
             ........
             .build();
 
-    Student savedStudent = studentRepository.save(student);
+    Student savedStudent = studentJpaRepository.save(student);
     return savedStudent.getId();//Default method of JpaRepository
 }
 ```

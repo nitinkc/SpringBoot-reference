@@ -1,7 +1,7 @@
 package com.spring.reference.service;
 
 import com.spring.reference.dao.pg.PgJdbcTemplate;
-import com.spring.reference.dao.repository.StudentRepository;
+import com.spring.reference.dao.repository.StudentJpaRepository;
 import com.spring.reference.dto.StudentPGRequestBody;
 import com.spring.reference.dto.StudentPgDto;
 import com.spring.reference.mapper.StudentMapper;
@@ -14,21 +14,21 @@ import java.util.List;
 
 @Service
 public class StudentServiceWithJdbcTemplatePg {
-    private StudentRepository studentRepository;
+    private StudentJpaRepository studentJpaRepository;
     private StudentMapper mapper;
 
     private PgJdbcTemplate pgJdbcTemplate;
 
 
     @Autowired
-    public StudentServiceWithJdbcTemplatePg(@Qualifier("jpaStudentRepository") StudentRepository studentRepository, StudentMapper mapper, PgJdbcTemplate pgJdbcTemplate) {
-        this.studentRepository = studentRepository;
+    public StudentServiceWithJdbcTemplatePg(@Qualifier("jpaStudentRepository") StudentJpaRepository studentJpaRepository, StudentMapper mapper, PgJdbcTemplate pgJdbcTemplate) {
+        this.studentJpaRepository = studentJpaRepository;
         this.mapper = mapper;
         this.pgJdbcTemplate = pgJdbcTemplate;
     }
 
     public List<StudentPgDto> getStudentById()  {
-        List<Student> maleStudents = studentRepository.findMaleStudents();
+        List<Student> maleStudents = studentJpaRepository.findMaleStudents();
 
         //Convert the DB Model into Response DTO
         /*List<StudentPgDto> studentPgDtos = maleStudents.stream()
@@ -46,7 +46,7 @@ public class StudentServiceWithJdbcTemplatePg {
     }
     public Student saveSingleStudentPgJdbc(StudentPGRequestBody studentPGRequestBody){
         Student sDetail = Student.builder()
-                .id(studentRepository.getNextSequence())
+                .id(studentJpaRepository.getNextSequence())
                 .firstName(studentPGRequestBody.getFirstName())
                 .lastName(studentPGRequestBody.getLastName())
                 .gender(studentPGRequestBody.getGender())

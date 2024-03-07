@@ -1,21 +1,39 @@
 package com.spring.reference.model;
 
+import com.spring.reference.exception.ValidPhoneNumber;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.UUID;
 
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode
-@NoArgsConstructor
-@AllArgsConstructor
+
+@Entity
+@Data
+@RequiredArgsConstructor
+@Table(name = "users")
 public class User {
-	private Integer id;
-	@Size(min=2,message = "Names should be at-least 2 characters long")
+	@Id
+	private UUID id;
+
+	@NotBlank(message = "Name is required")
+	@Size(min=3,message = "Names should be at-least 3 characters long")
 	private String name;
+
 	@Past(message = "DOB Cannot be in the Future")
+	@Column(name = "date_of_birth")
 	private Date dob;
+
+	@ValidPhoneNumber(message = "Can be in the format {1111111111, (111) 111 1111, 111-111-1111}")
+	private String phone;
+
+	@Email(message = "Please provide a valid email address")
+	private String email;
 }

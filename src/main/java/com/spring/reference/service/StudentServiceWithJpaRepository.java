@@ -1,8 +1,9 @@
 package com.spring.reference.service;
 
+import com.spring.reference.exception.business.StudentNotFoundException;
 import com.spring.reference.mapper.StudentMapper;
 import com.spring.reference.model.Student;
-import com.spring.reference.dao.repository.StudentRepository;
+import com.spring.reference.dao.repository.StudentJpaRepository;
 import com.spring.reference.dto.StudentDto;
 import com.spring.reference.dto.StudentSave;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,24 +15,23 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class StudentServiceWithDbRepository {
+public class StudentServiceWithJpaRepository {
 
-    private StudentRepository studentRepository;
+    private StudentJpaRepository studentJpaRepository;
     @Autowired
     private StudentMapper studentMapper;//Field Injection
 
-    public StudentServiceWithDbRepository(@Qualifier("jpaStudentRepository") StudentRepository studentRepository) {//Constructor injection
-        this.studentRepository = studentRepository;
+    public StudentServiceWithJpaRepository(@Qualifier("jpaStudentRepository") StudentJpaRepository studentJpaRepository) {//Constructor injection
+        this.studentJpaRepository = studentJpaRepository;
     }
 
     public StudentDto getStudentById(int studentId)  {
-        Optional<Student> studentById = null;//Method from JPA Repo, returns Optional
-        studentById = studentRepository.findById(studentId);
+        //Method from JPA Repo, returns Optional
+        Optional<Student> studentById = studentJpaRepository.findById(studentId);
 
-        Student student = studentById.orElseGet(Student::new);//Return empty constructor if no data/Null
+        Student student = studentById.orElseThrow(() -> new StudentNotFoundException("The Student with Id "
+                + studentId  + " does not exist")); //Return empty constructor if no data/Null Or
         //Throw custom Exception, in case business requirement is not to return empty data
-        //Student student = student = studentById.orElseThrow(() -> new StudentNotFoundException("The Student with Id
-        // " + studentId + " " + "does not exist"));
 
         //Convert the DB Model into Response DTO
         StudentDto studentDto = studentMapper.convert(student);//Convertor/Mapper/Transformer
@@ -39,7 +39,7 @@ public class StudentServiceWithDbRepository {
     }
 
     public List<StudentDto> getStudentByIds(List<Integer> studentIdList) {
-        List<Student> studentDetailsList = studentRepository.findAllById(studentIdList);
+        List<Student> studentDetailsList = studentJpaRepository.findAllById(studentIdList);
         List<StudentDto> studentDtoList = studentDetailsList.stream()
                 .map(studentMapper::convert)
                 .collect(Collectors.toList());
@@ -49,7 +49,7 @@ public class StudentServiceWithDbRepository {
     public int saveStudent(StudentSave studentSave){
         Student student = Student.builder()
                 //.id(4000)// If Primary key is provided, it behaves like an update statement
-                .id(studentRepository.getNextSequence())//Introducing Sequence
+                .id(studentJpaRepository.getNextSequence())//Introducing Sequence
                 .firstName(studentSave.firstName())
                 .lastName(studentSave.lastName())
                 .cityofbirth(studentSave.cityofbirth())
@@ -59,7 +59,7 @@ public class StudentServiceWithDbRepository {
                 .university(studentSave.university())
                 .build();
 
-        Student savedStudent = studentRepository.save(student);
+        Student savedStudent = studentJpaRepository.save(student);
         return savedStudent.getId();
     }
 }

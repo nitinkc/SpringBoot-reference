@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 @EnableJpaRepositories
 @Qualifier("jpaStudentRepository")
-public interface StudentRepository extends JpaRepository<Student, Integer> {
+public interface StudentJpaRepository extends JpaRepository<Student, Integer> {
 
     // Custom query - ONLY for Simple Queries,
     @Query(nativeQuery = true, value = "SELECT * from student s WHERE s.gender = null")

@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/payment")
-public class PaymentController {
+public class I_PaymentController_Qualifier {
 
     private PaymentService creditCardpaymentService;
     private PaymentService onlineBankingpaymentService;
 
     @Autowired
-    public PaymentController(@Qualifier(value = "creditCardService") PaymentService creditCardPaymentService,
-                             @Qualifier("onlineBankingService") PaymentService onlineBankingpaymentService) {
+    public I_PaymentController_Qualifier(@Qualifier(value = "creditCardService") PaymentService creditCardPaymentService,
+                                         @Qualifier("onlineBankingService") PaymentService onlineBankingpaymentService) {
         this.creditCardpaymentService = creditCardPaymentService;
         this.onlineBankingpaymentService = onlineBankingpaymentService;
     }
@@ -24,6 +24,7 @@ public class PaymentController {
     @GetMapping(value = "/creditCard",
             produces = { "application/json"})
     public String getPaymentWithCC(){
+    System.out.println("testing");
         return creditCardpaymentService.processPayment();
     }
 
