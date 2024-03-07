@@ -67,7 +67,7 @@ public class ValidationExceptionHandler {
         });
 
         MyExceptionResponse myExceptionResponse = MyExceptionResponse.builder()
-                .from("ExceptionResponse")
+                .from("ExceptionResponse from MethodArgumentNotValidException")
                 .timestamp(ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS a z(O)")))
                 //.exceptionType(ex.getBindingResult().toString())
                 .errorMessage(errors.toString())
@@ -93,7 +93,7 @@ public class ValidationExceptionHandler {
     protected ResponseEntity<MyExceptionResponse> handleRequestParamNotValid(Exception exception, final HttpServletRequest request) {
 
         MyExceptionResponse error = MyExceptionResponse.builder()
-                .from("Validation Exception Response from handleRequestParamNotValid")
+                .from("Validation Exception Response from handleRequestParamNotValid :: ConstraintViolationException")
                 .errorMessage(exception.getMessage())
                 .requestedURI(request.getRequestURI())
                 .exceptionType(exception.getClass().getSimpleName())

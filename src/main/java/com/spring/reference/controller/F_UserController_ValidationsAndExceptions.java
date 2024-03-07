@@ -1,11 +1,15 @@
 package com.spring.reference.controller;
 
+import com.spring.reference.dto.AdminDTO;
 import com.spring.reference.model.User;
 import com.spring.reference.exception.business.UserNotFoundException;
 import com.spring.reference.service.UserService;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -14,13 +18,12 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/users")
+@Slf4j
+@Validated
+@AllArgsConstructor
 public class F_UserController_ValidationsAndExceptions {
 
 	private UserService userService;
-
-	public F_UserController_ValidationsAndExceptions(UserService userService) {
-		this.userService = userService;
-	}
 
 	//Retrieve all users
 	@GetMapping(path = "/all")
@@ -48,6 +51,15 @@ public class F_UserController_ValidationsAndExceptions {
 		return ResponseEntity
 				.status(HttpStatus.CREATED)
 				.body(getStringObjectMap(savedUser));
+	}
+
+	@PostMapping("/admin/add")
+	public ResponseEntity<AdminDTO> createAdmin(
+			@Validated(AdminDTO.AdminValidation.class) @RequestBody AdminDTO adminDTO) {
+
+		log.info(adminDTO.toString());
+		// Business logic to create an admin
+		return ResponseEntity.ok(adminDTO);
 	}
 
 	@PutMapping("/add")

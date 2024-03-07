@@ -183,3 +183,11 @@ Documentation
 [JSON Report : http://localhost:8090/v3/api-docs](http://localhost:8090/v3/api-docs)
 
 [HTML Report : http://localhost:8090/swagger-ui/index.html](http://localhost:8090/swagger-ui/index.html)
+
+Upload a pic to test via postman form-data uploaded as a file
+
+```shell
+curl --location 'localhost:8089/api/upload' \
+--form 'file=@"/Users/nichaurasia/Programming/SpringBootProjects/SpringBoot-GlobalExceptionHandling/src/main/resources/pic.png"'
+```
+![form-data.png](src%2Fmain%2Fresources%2Fform-data.png)
