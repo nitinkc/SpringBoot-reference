@@ -1002,3 +1002,36 @@ insert into student (id, first_name, last_name, gender, cityofbirth, email, univ
 
 insert into users(id,name,date_of_birth,email,phone) values('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11','Budd Castellone', '1972-06-23', 'bcastellonerm@multiply.com', '111-111-1111');
 insert into users(id,name,date_of_birth,email,phone) values('c2d29867-3d0b-d497-9191-18a9d8ee7830','Pattin Ferrelli', '1985-06-11','pferrellirn@mashable.com','(222) 222 2222');
+
+-- Inserting sample data into Ref_Table
+INSERT INTO Ref_Table (ref_name) VALUES
+('10mg'),
+('20mg'),
+('30mg'),
+('40mg'),
+('50mg'),
+('60mg'),
+('70mg'),
+('80mg'),
+('90mg'),
+('100mg'),
+('1 tablet'),
+('2 tablets'),
+('3 tablets'),
+('4 tablets'),
+('5 tablets'),
+('6 tablets'),
+('7 tablets'),
+('8 tablets'),
+('9 tablets'),
+('10 tablets'),
+('Once a day'),
+('Twice a day'),
+('Three times a day'),
+('Four times a day'),
+('Five times a day'),
+('Six times a day'),
+('Seven times a day'),
+('Eight times a day'),
+('Nine times a day'),
+('Ten times a day');

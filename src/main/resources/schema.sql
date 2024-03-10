@@ -30,3 +30,14 @@ CREATE TABLE IF NOT EXISTS users (
 	email VARCHAR(50) not null,
 	phone VARCHAR(50) not null
 );
+
+
+-- Create the Ref_Table table
+DROP TABLE IF EXISTS Ref_Table;
+CREATE TABLE Ref_Table (
+    ref_id SERIAL PRIMARY KEY,
+    ref_name VARCHAR(255) NOT NULL,
+    create_date_time_gmt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    update_date_time_gmt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    delete_date_time_gmt TIMESTAMP
+);

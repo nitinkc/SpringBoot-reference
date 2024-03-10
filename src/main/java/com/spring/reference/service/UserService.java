@@ -3,6 +3,7 @@ package com.spring.reference.service;
 import com.spring.reference.dao.repository.UserRepository;
 import com.spring.reference.exception.business.*;
 import com.spring.reference.model.User;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ExceptionTypeFilter;
@@ -12,9 +13,10 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
+@AllArgsConstructor
 public class UserService {
 
-    @Autowired private UserRepository userRepository;
+    private UserRepository userRepository;
 
     public List<User> findAll() {
         return userRepository.findAll();

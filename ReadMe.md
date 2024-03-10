@@ -1,6 +1,29 @@
 
 [https://nitinkc.github.io/spring/microservices/spring-revisions/](https://nitinkc.github.io/spring/microservices/spring-revisions/)
 
+# Prerequisites:
+
+**Postgres DB** 
+
+- URL : jdbc:postgresql://localhost:5432/mydb
+- user name : dbuser
+- password : a
+- DB Name : mydb
+- schema : test
+- app yml property : spring.datasource.url=jdbc:postgresql://localhost:5432/mydb?currentSchema=test
+
+
+**Redis**
+
+Run Docker
+
+```shell
+docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
+```
+Access the Redis UI
+
+[http://localhost:8001/redis-stack/browser](http://localhost:8001/redis-stack/browser)
+
 # Postgres DB Integration
 
 The data source URL takes in the DB name and `?currentSchema` as the name of the schema
@@ -15,6 +38,7 @@ spring.datasource.driver-class-name=org.postgresql.Driver
 ```
 
 JpaRepository extendsCrudRepository and provides support for Pagination and Sorting.
+
 ### Custom query
 
 With the Repository, custom queries can be added
@@ -29,6 +53,7 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
     List<Student> findMaleStudents();
 
 ```
+
 `nativeQuery = true` ensures that it runs with Selected DB
 ```java
 @Query(nativeQuery = true, value = "SELECT * from student s WHERE s.gender = 'Male'")
@@ -106,7 +131,7 @@ create a file `Dockerfile`
 ```dockerfile
 # Pickup the right image
 FROM eclipse-temurin:17-jdk-alpine
-MAINTAINER suchismitadeb2000@gmail.com
+MAINTAINER <email_id>
 
 # Set up work directory
 WORKDIR /app
@@ -184,6 +209,7 @@ Documentation
 
 [HTML Report : http://localhost:8090/swagger-ui/index.html](http://localhost:8090/swagger-ui/index.html)
 
+# Upload a pic
 Upload a pic to test via postman form-data uploaded as a file
 
 ```shell
@@ -191,3 +217,19 @@ curl --location 'localhost:8089/api/upload' \
 --form 'file=@"/Users/nichaurasia/Programming/SpringBootProjects/SpringBoot-GlobalExceptionHandling/src/main/resources/pic.png"'
 ```
 ![form-data.png](src%2Fmain%2Fresources%2Fform-data.png)
+
+# Redis Caching
+
+@EnableCaching from import org.springframework.cache.annotation.EnableCaching;
+
+
+Service Class Methods:
+
+Using @Cacheable in service class methods is common when you want to cache the results of business logic operations or data retrieval operations performed by your service layer.
+Service methods often encapsulate complex logic, including data retrieval from repositories, manipulation, and processing of data.
+By caching the results of service methods, you can improve the performance of your application by avoiding redundant computations or database queries for frequently accessed data.
+Repository Methods:
+
+While repository methods are primarily responsible for interacting with the database, you can still use @Cacheable in repository methods to cache the results of database queries.
+Caching repository methods can be beneficial if the queries are frequently executed and the data doesn't change frequently.
+However, caching repository methods might not be suitable for complex queries or queries that involve dynamic parameters, as it can lead to cache key management complexities and cache pollution.
