@@ -28,6 +28,4 @@ public class K_RefTable_Caching_Controller {
 
         return refTableService.findById(id);
     }
-
-
 }
