@@ -3,12 +3,11 @@ package com.spring.reference.controller;
 
 import com.spring.reference.model.Currency;
 import com.spring.reference.service.CurrencyConvertorService;
+import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Map;
 
 @RestController
 public class C_CurrencyController_PathVsReqParam {

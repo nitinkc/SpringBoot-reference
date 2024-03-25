@@ -2,11 +2,9 @@ package com.spring.reference.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import java.time.ZonedDateTime;
 import lombok.Builder;
 import lombok.Data;
-
-import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 
 @Data
 @Builder

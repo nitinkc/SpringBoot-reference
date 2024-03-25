@@ -1,10 +1,12 @@
 package com.spring.reference.controller;
 
 import com.spring.reference.dto.AdminDTO;
-import com.spring.reference.model.User;
 import com.spring.reference.exception.business.UserNotFoundException;
+import com.spring.reference.model.User;
 import com.spring.reference.service.UserService;
 import jakarta.validation.Valid;
+import java.net.URI;
+import java.util.*;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -12,9 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import java.net.URI;
-import java.util.*;
 
 @RestController
 @RequestMapping("/users")

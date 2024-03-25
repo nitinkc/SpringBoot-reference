@@ -1,13 +1,12 @@
 package com.spring.reference.controller;
 
 import com.spring.reference.model.HelloWorldReturnBean;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 
 @Controller
 @RequestMapping("/health")

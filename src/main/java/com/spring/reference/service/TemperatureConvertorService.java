@@ -1,10 +1,9 @@
 package com.spring.reference.service;
 import com.spring.reference.model.Temperature;
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.springframework.stereotype.Service;
 
 // C = (5/9) * (F-32)
 @Service

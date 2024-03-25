@@ -1,18 +1,17 @@
 package com.spring.reference.service;
 
+import static com.spring.reference.utils.TimerUtility.*;
+
 import com.spring.reference.dao.repository.RefTableRepository;
 import com.spring.reference.dto.RefTableDTO;
 import com.spring.reference.exception.business.BadInputException;
 import com.spring.reference.model.RefTable;
+import java.util.List;
+import java.util.Optional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
-
-import static com.spring.reference.utils.TimerUtility.*;
 
 @Service
 @AllArgsConstructor

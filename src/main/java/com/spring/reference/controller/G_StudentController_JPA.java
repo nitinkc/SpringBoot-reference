@@ -5,16 +5,15 @@ import com.spring.reference.dto.StudentDtoClass;
 import com.spring.reference.dto.StudentRequestBody;
 import com.spring.reference.dto.StudentSave;
 import com.spring.reference.exception.business.DbDownException;
-import com.spring.reference.exception.business.TraceableBusinessException;
 import com.spring.reference.exception.business.StudentNotFoundException;
+import com.spring.reference.exception.business.TraceableBusinessException;
 import com.spring.reference.service.StudentServiceWithJpaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 @RestController(value = "Rest controller for student with Db")
 @RequestMapping("/student/jpa")

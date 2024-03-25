@@ -1,10 +1,9 @@
 package com.spring.reference.exception;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import java.io.Serializable;
 import lombok.*;
 import org.springframework.http.HttpStatus;
-
-import java.io.Serializable;
 
 /**
  * A serializable traceable error for tracking and triaging exception and error flows in platform or framework

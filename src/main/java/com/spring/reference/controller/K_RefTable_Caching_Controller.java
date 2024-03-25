@@ -1,14 +1,11 @@
 package com.spring.reference.controller;
 
 import com.spring.reference.dto.RefTableDTO;
-import com.spring.reference.model.RefTable;
 import com.spring.reference.service.RefTableService;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Map;
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1")

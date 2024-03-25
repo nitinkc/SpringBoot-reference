@@ -1,11 +1,10 @@
 package com.spring.reference.utils;
 
 import jakarta.servlet.http.HttpServletRequest;
-import lombok.experimental.UtilityClass;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Enumeration;
+import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class ServerUtils {

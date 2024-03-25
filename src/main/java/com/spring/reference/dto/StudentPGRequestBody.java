@@ -1,8 +1,7 @@
 package com.spring.reference.dto;
 
-import lombok.*;
-
 import java.sql.Date;
+import lombok.*;
 
 @Getter
 @Setter

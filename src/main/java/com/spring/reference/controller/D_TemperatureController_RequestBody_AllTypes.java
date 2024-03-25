@@ -3,14 +3,13 @@ package com.spring.reference.controller;
 
 import com.spring.reference.model.Temperature;
 import com.spring.reference.service.TemperatureConvertorService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class D_TemperatureController_RequestBody_AllTypes {

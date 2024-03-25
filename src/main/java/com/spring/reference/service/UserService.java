@@ -3,14 +3,11 @@ package com.spring.reference.service;
 import com.spring.reference.dao.repository.UserRepository;
 import com.spring.reference.exception.business.*;
 import com.spring.reference.model.User;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.util.ExceptionTypeFilter;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor

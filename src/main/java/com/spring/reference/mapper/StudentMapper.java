@@ -1,8 +1,8 @@
 package com.spring.reference.mapper;
 
-import com.spring.reference.model.Student;
 import com.spring.reference.dto.StudentDto;
 import com.spring.reference.dto.StudentPgDto;
+import com.spring.reference.model.Student;
 import org.springframework.stereotype.Component;
 
 @Component

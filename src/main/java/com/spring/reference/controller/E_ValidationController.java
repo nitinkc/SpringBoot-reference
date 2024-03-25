@@ -5,11 +5,10 @@ import com.spring.reference.dto.ExampleResponse;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
+import java.time.ZonedDateTime;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.ZonedDateTime;
 
 @RestController
 @RequestMapping("/test")

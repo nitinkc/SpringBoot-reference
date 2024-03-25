@@ -1,15 +1,14 @@
 package com.spring.reference.dao.repository;
 
 import com.spring.reference.model.Student;
+import java.time.LocalDate;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-
-import java.time.LocalDate;
-import java.util.List;
 
 @Repository
 @EnableJpaRepositories
