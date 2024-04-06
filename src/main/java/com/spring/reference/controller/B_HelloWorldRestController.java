@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/api/v0/hello-world")
-public class BHelloWorldRestController {
+public class B_HelloWorldRestController {
 
     @GetMapping(path="/getMapping")
     public String helloWorldViaGetMapping() {

@@ -1,9 +1,9 @@
-
-[https://nitinkc.github.io/spring/microservices/spring-revisions/](https://nitinkc.github.io/spring/microservices/spring-revisions/)
+# Reference:
+[https://nitinkc.github.io/spring/microservices/springboot-reference/](https://nitinkc.github.io/spring/microservices/springboot-reference/)
 
 # Prerequisites:
 
-**Postgres DB** 
+**Run Postgres DB** 
 
 - URL : jdbc:postgresql://localhost:5432/mydb
 - user name : dbuser
@@ -13,9 +13,9 @@
 - app yml property : spring.datasource.url=jdbc:postgresql://localhost:5432/mydb?currentSchema=test
 
 
-**Redis**
+**Run Redis on docker**
 
-Run Docker
+Run Docker Desktop on Local
 
 ```shell
 docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
@@ -74,13 +74,11 @@ JPQL with Query parameter
 List<Student> findByDobDateAfter(@Param("date") LocalDate date);
 ```
 
-
 # PUT Calls
 
 # Postgres Db On Conflict Insert Statement
 
 ```sql
-
 insert into student 
     (id, first_name, last_name, gender, cityofbirth, email, university, dob) 
 values (1, 'Anjanette', 'Pietrzyk', 'Female', 'Ugljevik', 'apietrzyk0@wufoo.com', 'Sul Ross State University', '1972-01-30')
@@ -154,7 +152,6 @@ as service inside the docker container and then run the spring boot application
  volumes: # Providing the customized path to 01-init.sh for entrypoint
       - ./src/main/resources/db:/docker-entrypoint-initdb.d/
 ```
-   
 
 The init file has to be given execute permission
 
@@ -217,4 +214,16 @@ curl --location 'localhost:8089/api/upload' \
 --form 'file=@"/Users/nichaurasia/Programming/SpringBootProjects/SpringBoot-GlobalExceptionHandling/src/main/resources/pic.png"'
 ```
 ![form-data.png](src%2Fmain%2Fresources%2Fform-data.png)
+
+# Documentation
+
+[http://localhost:8090/swagger-ui/index.html#/](http://localhost:8090/swagger-ui/index.html#/)
+
+```properties
+springdoc.swagger-ui.enabled = true
+springdoc.swagger-ui.path = /swagger-ui.html
+springdoc.swagger-ui.tryItOutEnabled = true
+springdoc.swagger-ui.filter = false
+springdoc.swagger-ui.syntaxHighlight.activated = true
+```
 

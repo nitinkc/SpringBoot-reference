@@ -4,6 +4,10 @@ import com.spring.reference.dto.AdminDTO;
 import com.spring.reference.exception.business.UserNotFoundException;
 import com.spring.reference.model.User;
 import com.spring.reference.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import java.net.URI;
 import java.util.*;
@@ -32,13 +36,25 @@ public class F_UserController_ValidationsAndExceptions {
 
 	//Retrieve specific users
 	@GetMapping(path = "/{id}")
-	public User retrieveUserById(@PathVariable UUID id) throws UserNotFoundException {
+	@Operation(summary = "Retrieve user by ID", description = "Retrieves a user by their ID.")
+	public User retrieveUserById(
+			@Parameter(description = "User ID", required = true)
+			@PathVariable UUID id) throws UserNotFoundException {
+
 		return userService.findById(id);
 	}
 
 	//Add a new User
 	@PostMapping("/add")
-	public ResponseEntity<Map<String,Object>> addNewUser(@Valid @RequestBody User user){
+	@Operation(summary = "Add a new user", description = "Adds a new user to the system.")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "201", description = "User created successfully"),
+			@ApiResponse(responseCode = "400", description = "Invalid request body"),
+			@ApiResponse(responseCode = "409", description = "Resource already exists, return 409 Conflict")
+	})
+	public ResponseEntity<Map<String,Object>> addNewUser(
+			@Parameter(description = "User object to be added", required = true)
+			@Valid @RequestBody User user){
 		// Check if the user with the same identifier already exists
 		/*if (userService.findByphoneOrEmail(user).size() > 0) {
 			// Resource already exists, return 409 Conflict

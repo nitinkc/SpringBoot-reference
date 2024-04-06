@@ -1,6 +1,6 @@
 FROM eclipse-temurin:17-jdk-alpine
 #FROM openjdk:18
-MAINTAINER suchismitadeb2000@gmail.com
+MAINTAINER myEmail@gmail.com
 
 # Set up work directory
 WORKDIR /app

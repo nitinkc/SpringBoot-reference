@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/health")
-public class AControllerWithResponseBody {
+public class A_ControllerWithResponseBody {
 
   // @Controller needs @ResponseBody with method name
   @RequestMapping(path = "/check", method = RequestMethod.GET)
