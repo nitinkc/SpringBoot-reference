@@ -219,6 +219,13 @@ curl --location 'localhost:8089/api/upload' \
 
 [http://localhost:8090/swagger-ui/index.html#/](http://localhost:8090/swagger-ui/index.html#/)
 
+### Metrics
+
+
+[http://localhost:8090/actuator/metrics/system.cpu.count](http://localhost:8090/actuator/metrics/system.cpu.count)
+
+[http://localhost:8090/actuator/metrics/process.cpu.usage](http://localhost:8090/actuator/metrics/process.cpu.usage)
+[http://localhost:8090/actuator/metrics/jvm.gc.pause](http://localhost:8090/actuator/metrics/jvm.gc.pause)
 ```properties
 springdoc.swagger-ui.enabled = true
 springdoc.swagger-ui.path = /swagger-ui.html
