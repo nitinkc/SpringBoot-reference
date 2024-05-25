@@ -10,13 +10,13 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends JpaRepository<User, UUID> {
 
 	// Retrieve all users
-	public List<User> findAll();
+    List<User> findAll();
 	
 	// Retrieve users by Id
-	public Optional<User> findById(UUID id);
+    Optional<User> findById(UUID id);
 
 	//Save a new User
-	public User save(User user);
+    User save(User user);
 
 	// Custom query to search users by name and date of birth (DOB)
 	@Query("SELECT u FROM User u WHERE u.name = :name AND u.dob = :dob")

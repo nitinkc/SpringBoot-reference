@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class StudentServiceWithJpaRepository {
 
-    private StudentJpaRepository studentJpaRepository;
+    private final StudentJpaRepository studentJpaRepository;
     @Autowired
     private StudentMapper studentMapper;//Field Injection
 

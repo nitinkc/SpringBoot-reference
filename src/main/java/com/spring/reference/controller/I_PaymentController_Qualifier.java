@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/payment")
 public class I_PaymentController_Qualifier {
 
-    private PaymentService creditCardpaymentService;
-    private PaymentService onlineBankingpaymentService;
+    private final PaymentService creditCardpaymentService;
+    private final PaymentService onlineBankingpaymentService;
 
     @Autowired
     public I_PaymentController_Qualifier(@Qualifier(value = "creditCardService") PaymentService creditCardPaymentService,

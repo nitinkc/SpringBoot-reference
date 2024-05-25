@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/jdbc")
 public class H_StudentController_PgJdbc {
 
-    private StudentServiceWithJdbcTemplatePg studentServiceWithJdbcTemplatePg;
+    private final StudentServiceWithJdbcTemplatePg studentServiceWithJdbcTemplatePg;
 
     @Autowired
     public H_StudentController_PgJdbc(StudentServiceWithJdbcTemplatePg studentServiceWithJdbcTemplatePg) {
@@ -22,12 +22,7 @@ public class H_StudentController_PgJdbc {
     @GetMapping("/student/{id}")
     public ResponseEntity<Student> getTutorialById(@PathVariable("id") int id) {
         Student student = studentServiceWithJdbcTemplatePg.getStudentByIdPgJdbc(id);
-
-        if (student != null) {
-            return new ResponseEntity<>(student, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        return student != null ? new ResponseEntity<>(student, HttpStatus.OK) : new ResponseEntity<Student>(HttpStatus.NOT_FOUND);
     }
 
     @PutMapping("/student/save")

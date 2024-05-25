@@ -21,9 +21,7 @@ public class E_ValidationController {
                             @RequestParam(value = "greet", required = false, defaultValue = "No Val from Request") String greet,
                             @RequestParam(value = "count", required = false, defaultValue = "-1") Integer count) {
 
-        StringBuilder sb= new StringBuilder();
-        sb.append(email).append(" email OK").append("\nCount is ").append(count).append("\n").append(greet);
-        return sb.toString();
+        return email + " email OK" + "\nCount is " + count + "\n" + greet;
     }
 
     @GetMapping(path = "/pathVariable/{var_name}")

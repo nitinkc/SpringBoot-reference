@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 public interface RefTableRepository extends JpaRepository<RefTable, Integer> {
 
     // Retrieve users by Id
-    public Optional<RefTable> findById(Integer id);
+    Optional<RefTable> findById(Integer id);
 
     // Retrieve entities by a list of IDs
     @Query("SELECT r FROM RefTable r WHERE r.refId IN :ids")

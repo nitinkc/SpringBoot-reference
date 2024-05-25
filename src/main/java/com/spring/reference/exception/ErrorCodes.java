@@ -8,8 +8,8 @@ public enum ErrorCodes {
 	;
 
 	//TODO: Error codes which are dependant on other micro services like Orders service, etc,.
-	private String errorCode;
-	private String errorMessage;
+	private final String errorCode;
+	private final String errorMessage;
 
 	public String getCode() {
 		return this.getErrorCode() + " :: " + this.getErrorMessage();

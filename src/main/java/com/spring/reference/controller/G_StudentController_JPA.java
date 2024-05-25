@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/student/jpa")
 public class G_StudentController_JPA {
 
-    private StudentServiceWithJpaRepository studentServiceWithJpaRepository;
+    private final StudentServiceWithJpaRepository studentServiceWithJpaRepository;
 
     @Autowired
     public G_StudentController_JPA(StudentServiceWithJpaRepository studentServiceWithJpaRepository) {

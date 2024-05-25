@@ -40,12 +40,8 @@ public class FileUploadService {
 
         // Extract and return the response body
         Map<String, Object> responseBody = responseEntity.getBody();
-        if (responseBody != null) {
-            // Assuming the response contains a list of strings under the key "result"
-            return responseBody;
-        } else {
-            // Handle the case where the response body is null
-            return null;
-        }
+        // Assuming the response contains a list of strings under the key "result"
+        // Handle the case where the response body is null
+        return responseBody;
     }
 }

@@ -13,10 +13,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class StudentServiceWithJdbcTemplatePg {
-    private StudentJpaRepository studentJpaRepository;
-    private StudentMapper mapper;
+    private final StudentJpaRepository studentJpaRepository;
+    private final StudentMapper mapper;
 
-    private PgJdbcTemplate pgJdbcTemplate;
+    private final PgJdbcTemplate pgJdbcTemplate;
 
 
     @Autowired

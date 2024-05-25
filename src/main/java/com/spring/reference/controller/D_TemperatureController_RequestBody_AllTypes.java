@@ -18,7 +18,7 @@ public class D_TemperatureController_RequestBody_AllTypes {
 
     @GetMapping("/temperature")
     public List<String> test() {
-        return Arrays.asList("Temperature","Testing");
+        return List.of("Temperature","Testing");
     }
 
     @PostMapping(path = "/temperature-converter/value")

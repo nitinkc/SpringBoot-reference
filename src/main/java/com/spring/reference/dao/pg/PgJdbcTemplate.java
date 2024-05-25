@@ -33,7 +33,6 @@ public class PgJdbcTemplate{
 
         } catch (IncorrectResultSizeDataAccessException e) {
             System.out.println(e.getMessage());
-            ;
         }
         return student;
     }
@@ -61,7 +60,7 @@ public class PgJdbcTemplate{
                         preparedStatement.setString(5, student.getCityofbirth());
                         preparedStatement.setString(6, student.getEmail());
                         preparedStatement.setString(7, student.getUniversity());
-                        preparedStatement.setDate(8, (Date) student.getDob());
+                        preparedStatement.setDate(8, student.getDob());
 
                         return preparedStatement.execute();
                     });
