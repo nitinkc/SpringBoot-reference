@@ -53,8 +53,8 @@ dependencies {
 sonarqube {
 	properties {
 		property 'sonar.host.url', 'https://sonarqube.host.com'
-		property "sonar.login", ""
-		property "sonar.password", ""
+//		property "sonar.login", ""
+//		property "sonar.password", ""
 		property "sonar.projectKey", "nitinkc_SpringBoot-reference"
 		property "sonar.organization","nitinkc"
 //		property 'sonar.projectName', 'NameOf Service'
