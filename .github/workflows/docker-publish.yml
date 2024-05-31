@@ -1,13 +1,11 @@
-name: Publish DockerImage to Dockerhub
+name: Publish Image to Dockerhub
 
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
+#0 0 represents the minute and hour (midnight).
+#1 represents the day of the month (first day of the month).
+#1,4,7,10 represents the months (January, April, July, October).
 on:
   schedule:
-    - cron: '35 22 * * *'
+    - cron: '0 0 1 1,4,7,10 *'
   push:
     branches: [ "main" ]
     # Publish semver tags as releases.
@@ -50,10 +48,9 @@ jobs:
       # Set up BuildKit Docker container builder to be able to build
       # multi-platform images and export cache
       # https://github.com/docker/setup-buildx-action
-#      - name: Set up Docker Buildx
-#        uses: docker/setup-buildx-action@f95db51fddba0c2d1ec667646a06c2ce06100226 # v3.0.0
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@f95db51fddba0c2d1ec667646a06c2ce06100226 # v3.0.0
+#         uses: docker/setup-buildx-action@v3
 
       # Login against a Docker registry except on PR
       # https://github.com/docker/login-action
@@ -66,7 +63,9 @@ jobs:
 #          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Login to Docker Hub
-        uses: docker/login-action@v3
+        uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
+#        uses: docker/login-action@v3
+        if: github.event_name != 'pull_request'
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
@@ -83,16 +82,16 @@ jobs:
       # https://github.com/docker/build-push-action
       - name: Build and push Docker image
         id: build-and-push
-#        uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
+#        uses: docker/build-push-action@v5
         with:
           context: .
           file: ./Dockerfile
-#          push: ${{ github.event_name != 'pull_request' }}
-          push: true
-#          tags: ${{ steps.meta.outputs.tags }}
+          push: ${{ github.event_name != 'pull_request' }}
+#          push: true
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/boot-app:${{ env.VERSION_NUMBER_CUSTOM }}
+#          tags: ${{ secrets.DOCKERHUB_USERNAME }}/boot-app:${{ env.VERSION_NUMBER_CUSTOM }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
