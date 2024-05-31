@@ -86,9 +86,11 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          push: ${{ github.event_name != 'pull_request' }}
+#          push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+#          tags: ${{ secrets.DOCKERHUB_USERNAME }}/simple-java-app:${{ env.VERSION_NUMBER_CUSTOM }}
 #          cache-from: type=gha
 #          cache-to: type=gha,mode=max
 
