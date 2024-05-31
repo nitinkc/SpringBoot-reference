@@ -6,7 +6,7 @@ MAINTAINER myEmail@gmail.com
 WORKDIR /app
 
 # Copy the jar file into our app
-COPY build/libs/springboot-basics-1.0.jar /app/
+COPY build/libs/*.jar /app/
 
 # Exposing port as per app yml/property
 EXPOSE 8090
