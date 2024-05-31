@@ -11,7 +11,7 @@ ENV APP_HOME=/usr/app/
 WORKDIR $APP_HOME
 
 # Copy the jar file into our app
-COPY --from=BUILD $APP_HOME .
+COPY --from=$APP_HOME .
 
 # Exposing port as per app yml/property
 EXPOSE 8090
