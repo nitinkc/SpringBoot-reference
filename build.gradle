@@ -50,6 +50,23 @@ dependencies {
 
 }
 
+sonarqube {
+	properties {
+		property 'sonar.host.url', 'https://sonarqube.host.com'
+		property "sonar.login", ""
+		property "sonar.password", ""
+		property "sonar.projectKey", "nitinkc_SpringBoot-reference"
+		property "sonar.organization","nitinkc"
+//		property 'sonar.projectName', 'NameOf Service'
+		property 'sonar.gradle.skipCompile','true'
+		property 'sonar.java.source', 21
+		property 'sonar.junit.reportPaths', 'build/results'
+		property 'encoding', 'UTF-8'
+		property 'charSet', 'UTF-8'
+		property "sonar.coverage.jacoco.xmlReportPaths", "path.xml"
+	}
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
