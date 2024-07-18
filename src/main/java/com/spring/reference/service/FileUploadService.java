@@ -1,5 +1,6 @@
 package com.spring.reference.service;
 
+import java.util.HashMap;
 import java.util.Map;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
@@ -38,10 +39,20 @@ public class FileUploadService {
                 restTemplate.exchange(URL2, HttpMethod.POST,
                         requestEntity,responseType);
 
-        // Extract and return the response body
-        Map<String, Object> responseBody = responseEntity.getBody();
-        // Assuming the response contains a list of strings under the key "result"
-        // Handle the case where the response body is null
+        return getResponseBody(responseEntity);
+    }
+
+    private static Map<String, Object> getResponseBody(ResponseEntity<Map<String, Object>> responseEntity) {
+        Map<String, Object> responseBody = new HashMap<>();
+        if(responseEntity.getStatusCode().equals(HttpStatus.OK)){
+            responseBody = responseEntity.getBody();
+            // Extract and return the response body
+            // Assuming the response contains a list of strings under the key "result"
+            if (responseBody == null) {
+                throw new NullPointerException("Response body is null");
+            }
+            // Handle the case where the response body is null
+        }
         return responseBody;
     }
 }
