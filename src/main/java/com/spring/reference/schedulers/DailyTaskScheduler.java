@@ -1,6 +1,7 @@
-package com.spring.reference.service;
+package com.spring.reference.schedulers;
 
 
+import com.spring.reference.service.LicenseService;
 import lombok.AllArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
