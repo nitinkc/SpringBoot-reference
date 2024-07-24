@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Component("redis-health")
 @Slf4j
-public class RedisHealthIndicator implements HealthIndicator {
+public class RedisHealthIndicator implements HealthIndicator {//Actuator health indicator
 
     @Override
     public Health health() {
