@@ -1,0 +1,22 @@
+{
+  "product": "software",
+  "licensee": {
+    "company": "",
+    "name": "",
+    "email": ""
+  },
+  "key": "",
+  "creationDate": "2024-01-01",
+  "expirationDate": "2027-10-04",
+  "onExpiration": "grace",
+  "gracePeriod": "30d0h0m",
+  "platform": "any",
+  "licenseType": "",
+  "deploymentType": "",
+  "productVersion": {
+    "major": 2,
+    "minor": 5
+  },
+  "licenseVersion": "1.0.0",
+  "sendStatistics": "disabled"
+}

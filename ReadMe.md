@@ -24,6 +24,14 @@ Access the Redis UI
 
 [http://localhost:8001/redis-stack/browser](http://localhost:8001/redis-stack/browser)
 
+# Run Prometheus and Grafana
+
+```shell
+docker run -p 9090:9090 -v /Users/nichaurasia/Programming/SpringBootProjects/SpringBoot-reference/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
+
+docker run -d --name grafana -p 3000:3000 grafana/grafana
+```
+
 # Postgres DB Integration
 
 The data source URL takes in the DB name and `?currentSchema` as the name of the schema
@@ -216,16 +224,7 @@ curl --location 'localhost:8089/api/upload' \
 ![form-data.png](src%2Fmain%2Fresources%2Fform-data.png)
 
 # Documentation
-
 [http://localhost:8090/swagger-ui/index.html#/](http://localhost:8090/swagger-ui/index.html#/)
-
-### Metrics
-
-
-[http://localhost:8090/actuator/metrics/system.cpu.count](http://localhost:8090/actuator/metrics/system.cpu.count)
-
-[http://localhost:8090/actuator/metrics/process.cpu.usage](http://localhost:8090/actuator/metrics/process.cpu.usage)
-[http://localhost:8090/actuator/metrics/jvm.gc.pause](http://localhost:8090/actuator/metrics/jvm.gc.pause)
 ```properties
 springdoc.swagger-ui.enabled = true
 springdoc.swagger-ui.path = /swagger-ui.html
@@ -234,3 +233,28 @@ springdoc.swagger-ui.filter = false
 springdoc.swagger-ui.syntaxHighlight.activated = true
 ```
 
+### Metrics
+[http://localhost:8090/actuator/metrics/system.cpu.count](http://localhost:8090/actuator/metrics/system.cpu.count)
+
+[http://localhost:8090/actuator/metrics/process.cpu.usage](http://localhost:8090/actuator/metrics/process.cpu.usage)
+[http://localhost:8090/actuator/metrics/jvm.gc.pause](http://localhost:8090/actuator/metrics/jvm.gc.pause)
+
+
+### Prometheus
+[http://localhost:8090/actuator/prometheus](http://localhost:8090/actuator/prometheus)
+
+```properties
+## Actuator Settings
+#management.endpoints.web.exposure.include=health,info, metrics
+management.endpoint.health.show-details=always
+management.endpoint.health.enabled=true
+#Enable Actuator endpoints
+management.endpoints.web.exposure.include=*
+management.context-path=/actuator
+management.health.vault.enabled=false
+management.health.cassandra.enabled=false
+management.health.mail.enabled=false
+management.endpoint.env.show-values=ALWAYS
+management.endpoint.configprops.show-values=ALWAYS
+management.prometheus.metrics.export.enabled=true
+```

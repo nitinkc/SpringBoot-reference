@@ -21,6 +21,32 @@ services:
     ports:
       - 5432:5432
 
+  prometheus:
+    image: prom/prometheus:v2.44.0
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana:9.5.2
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    volumes:
+      - ./datasources:/etc/grafana/provisioning/datasources
+
+  redis:
+    image: redis/redis-stack-server:7.2.0-v6
+    ports:
+      - 6379:6379
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+    volumes:
+      - ./redis_data:/data
+
   app:
     build:
       context: .
@@ -29,7 +55,12 @@ services:
       - "8090:8090"
     depends_on:
       - postgres
+      - prometheus
+      - grafana
+      - redis
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/mydb?currentSchema=test
       SPRING_DATASOURCE_USERNAME: nichaurasia
       SPRING_DATASOURCE_PASSWORD: a
+      management.endpoints.web.exposure.include: prometheus
+      management.endpoint.prometheus.enabled: true

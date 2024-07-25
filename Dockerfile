@@ -1,9 +1,9 @@
-FROM eclipse-temurin:17-jdk-alpine
+FROM eclipse-temurin:21
 #FROM openjdk:18
 MAINTAINER myEmail@gmail.com
 
 # Set up work directory
-ENV JAR_NAME=springboot-ref-1.0.jar
+ENV JAR_NAME=SpringBoot-reference-1.0.jar
 ENV APP_HOME=/usr/app/
 
 WORKDIR $APP_HOME
@@ -16,4 +16,4 @@ COPY . .
 EXPOSE 8090
 
 # Starting the application
-CMD ["java", "-jar", "springboot-ref-1.0.jar"]
+CMD ["java", "-jar", "SpringBoot-reference-1.0.jar"]
