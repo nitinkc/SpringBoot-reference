@@ -12,8 +12,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EntityScan(basePackages = "com.spring.reference.model")
 @EnableJpaRepositories("com.spring.reference.dao") // Package containing repositories
 @ComponentScan(basePackages = "com.spring.reference")
-@EnableCaching
-@EnableScheduling
 public class SpringBootReferenceApplication {
 
 	public static void main(String[] args) {
