@@ -7,7 +7,7 @@ ENV JAR_NAME=SpringBoot-reference-1.0.jar
 ENV APP_HOME=/usr/app/
 
 WORKDIR $APP_HOME
-COPY . .
+COPY build/libs/*.jar /app
 
 # Copy the jar file into our app
 #COPY --from=$APP_HOME .

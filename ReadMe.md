@@ -237,12 +237,17 @@ springdoc.swagger-ui.syntaxHighlight.activated = true
 [http://localhost:8090/actuator/metrics/system.cpu.count](http://localhost:8090/actuator/metrics/system.cpu.count)
 
 [http://localhost:8090/actuator/metrics/process.cpu.usage](http://localhost:8090/actuator/metrics/process.cpu.usage)
+
 [http://localhost:8090/actuator/metrics/jvm.gc.pause](http://localhost:8090/actuator/metrics/jvm.gc.pause)
 
 
 ### Prometheus
+
 [http://localhost:8090/actuator/prometheus](http://localhost:8090/actuator/prometheus)
 
+**metrics**
+
+[http://localhost:8090/actuator/metrics](http://localhost:8090/actuator/metrics)
 ```properties
 ## Actuator Settings
 #management.endpoints.web.exposure.include=health,info, metrics
