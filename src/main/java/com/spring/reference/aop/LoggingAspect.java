@@ -7,6 +7,9 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 
 @Aspect
 @Component
@@ -26,5 +29,21 @@ public class LoggingAspect {
     @AfterThrowing(pointcut = "execution(* com.spring.reference.service.UserServiceForAOP.updateUserExceptionally(..))", throwing = "exception")
     public void logAfterThrowing(JoinPoint joinPoint, Throwable exception) {
         log.error("AOP : Exception in method: {} with message: {}", joinPoint.getSignature().getName(), exception.getMessage());
+    }
+
+    @Around("execution(* com.spring.reference.service.UserServiceForAOP.*(..))")
+    public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
+        long startTime = System.currentTimeMillis();
+
+        Object proceed = null;
+        try {
+            // Proceed with the original method execution
+            proceed = joinPoint.proceed();
+        } finally {
+            long executionTime = System.currentTimeMillis() - startTime;
+            log.info("AOP : Method {} executed in {} ms", joinPoint.getSignature(), executionTime);
+        }
+
+        return proceed;
     }
 }
